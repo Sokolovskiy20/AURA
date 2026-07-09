@@ -1,0 +1,341 @@
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
+import { motion } from 'framer-motion';
+import FAQ from '../components/FAQ';
+import ContactsBlock from '../components/ContactsBlock';
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.25, 1, 0.5, 1] } }
+};
+
+const LightingDetail = () => {
+  const [isNight, setIsNight] = useState(false);
+  const [hoveredCard, setHoveredCard] = useState(null);
+
+  return (
+    <div style={{ paddingTop: '100px', backgroundColor: 'var(--bg-primary)', minHeight: '100vh', overflow: 'hidden' }}>
+      
+      {/* 1. HERO BLOCK */}
+      <section style={{ backgroundColor: 'var(--bg-secondary)', padding: '60px 0 0 0', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)', width: '100vw', height: '600px', background: 'radial-gradient(ellipse at top, rgba(229,195,135,0.10) 0%, rgba(0,0,0,0) 80%)', filter: 'blur(60px)', zIndex: 0, pointerEvents: 'none' }}></div>
+        <div className="container" style={{ textAlign: 'center', position: 'relative', zIndex: 1 }}>
+          <motion.div initial="hidden" animate="visible" variants={fadeUp} style={{ maxWidth: '800px', margin: '0 auto 60px' }}>
+            <h1 className="title-hero" style={{ marginBottom: '20px' }}>Умный свет</h1>
+            <p className="subtitle">Освещение, которое живет в ритме вашего тела. Забудьте о выключателях.</p>
+            <div style={{ marginTop: '30px' }}>
+              <button className="btn btn-primary" onClick={() => document.getElementById('contacts').scrollIntoView({behavior: 'smooth'})}>Рассчитать стоимость</button>
+            </div>
+          </motion.div>
+          
+          <motion.div 
+            initial={{ opacity: 0, y: 100 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ duration: 1.2, delay: 0.2, ease: [0.25, 1, 0.5, 1] }}
+            style={{ width: '100%', maxWidth: '1000px', margin: '0 auto', borderTopLeftRadius: 'var(--radius-lg)', borderTopRightRadius: 'var(--radius-lg)', overflow: 'hidden', boxShadow: '0 30px 60px rgba(0,0,0,0.08)' }}
+          >
+            <img src="./images/apple_light.jpg" alt="Умный свет" style={{ width: '100%', display: 'block' }} />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* 2. ТЕХНОЛОГИИ */}
+      <section className="section" style={{ backgroundColor: 'var(--bg-primary)', paddingTop: '120px' }}>
+        <div className="container" style={{ textAlign: 'center' }}>
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "0px" }} variants={fadeUp} style={{ marginBottom: '80px' }}>
+            <h2 className="title-section" style={{  }}>Технологии, которые заботятся о вас</h2>
+            <p className="subtitle" style={{ maxWidth: '800px', margin: '16px auto 0', fontSize: '1rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              Инновации, скрытые в архитектуре
+            </p>
+          </motion.div>
+
+          <div className="flex-col-mobile" style={{ display: 'flex', flexDirection: 'row', gap: '20px', height: '400px', width: '100%' }}>
+            {[
+              { title: "Биодинамика", desc: "Свет автоматически подстраивается под циркадные ритмы: бодрящий холодный утром и обволакивающий теплый вечером." },
+              { title: "Невидимый монтаж", desc: "Мы используем светильники trimless (без рамок), которые полностью сливаются с потолком, оставляя только чистый свет." },
+              { title: "Датчики присутствия", desc: "Радарные датчики миллиметрового диапазона улавливают микродвижения. Свет включается за секунду до того, как вы войдете." },
+              { title: "Диммирование", desc: "Технология DALI позволяет плавно изменять яркость от 0.1% до 100% без малейшего мерцания, бережно относясь к зрению." }
+            ].map((tech, idx) => {
+              const isHovered = hoveredCard === idx;
+              const isAnyHovered = hoveredCard !== null;
+              const flexValue = isHovered ? 4 : (isAnyHovered ? 1 : 1);
+
+              return (
+              <motion.div 
+                key={idx}
+                onMouseEnter={() => setHoveredCard(idx)}
+                onMouseLeave={() => setHoveredCard(null)}
+                initial="hidden" whileInView="visible" viewport={{ once: true, margin: "0px" }} 
+                variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { delay: idx * 0.1, duration: 0.8 } } }}
+                style={{ 
+                  flex: flexValue,
+                  transition: 'flex 0.6s cubic-bezier(0.25, 1, 0.5, 1)',
+                  backgroundColor: 'var(--bg-card)', 
+                  background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
+                  border: '1px solid rgba(229,195,135,0.1)',
+                  padding: '40px 30px', 
+                  borderRadius: 'var(--radius-lg)',
+                  boxShadow: '0 20px 40px rgba(0,0,0,0.5)',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'flex-start',
+                  textAlign: 'left'
+                }}
+              >
+                <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)', width: '100px', height: '2px', background: 'linear-gradient(90deg, transparent, var(--accent-gold), transparent)', opacity: isHovered ? 0.8 : 0.2, transition: 'opacity 0.6s' }}></div>
+                
+                <div style={{ fontSize: '3rem', color: 'var(--accent-gold)', opacity: isHovered ? 0.3 : 0.1, marginBottom: '30px', lineHeight: 1, transition: 'opacity 0.6s' }}>0{idx + 1}</div>
+                
+                <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
+                  <h3 className="title-card" style={{ marginBottom: "16px", minHeight: "60px", display: "flex", alignItems: "flex-start" }}>{tech.title}</h3>
+                  <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6, margin: 0, fontSize: '0.95rem' }}>{tech.desc}</p>
+                </div>
+              </motion.div>
+            )})}
+          </div>
+        </div>
+      </section>
+
+      {/* 3. СЦЕНАРИИ (ДЕНЬ / НОЧЬ) */}
+      <section style={{ backgroundColor: '#000', position: 'relative', overflow: 'hidden' }}>
+        <Helmet>
+          <title>Умное Освещение | Продукты AURA</title>
+          <meta name="description" content="Биодинамическое освещение AURA. Свет, который подстраивается под вас." />
+        </Helmet>
+        <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '100vw', height: '100vw', background: 'radial-gradient(circle, rgba(229,195,135,0.05) 0%, rgba(0,0,0,0) 60%)', zIndex: 0, pointerEvents: 'none' }}></div>
+        <div className="container" style={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "0px" }} variants={fadeUp} style={{ marginBottom: '60px' }}>
+            <h2 className="title-section" style={{  }}>Сценарии света</h2>
+            <p className="subtitle" style={{ maxWidth: '800px', margin: '16px auto 0' }}>Нажмите, чтобы увидеть, как меняется пространство</p>
+            
+            <div className="flex-col-mobile" style={{ display: 'flex', justifyContent: 'center', gap: '16px', marginTop: '40px' }}>
+              <button 
+                onClick={() => setIsNight(false)} 
+                style={{ 
+                  padding: '12px 30px', 
+                  borderRadius: '30px', 
+                  border: '1px solid rgba(229,195,135,0.3)', 
+                  background: !isNight ? 'rgba(229,195,135,0.1)' : 'transparent',
+                  color: !isNight ? 'var(--accent-gold)' : 'var(--text-secondary)',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease',
+                  fontSize: '1rem',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05em'
+                }}
+              >
+                День
+              </button>
+              <button 
+                onClick={() => setIsNight(true)} 
+                style={{ 
+                  padding: '12px 30px', 
+                  borderRadius: '30px', 
+                  border: '1px solid rgba(229,195,135,0.3)', 
+                  background: isNight ? 'rgba(229,195,135,0.1)' : 'transparent',
+                  color: isNight ? 'var(--accent-gold)' : 'var(--text-secondary)',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease',
+                  fontSize: '1rem',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05em'
+                }}
+              >
+                Ночь
+              </button>
+            </div>
+          </motion.div>
+
+          <div style={{ borderRadius: 'var(--radius-lg)', overflow: 'hidden', height: '60vh', position: 'relative', boxShadow: '0 30px 60px rgba(0,0,0,0.5)' }}>
+            <img 
+              src="./images/apple_hero.jpg" 
+              alt="Day Scene" 
+              style={{ 
+                position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', 
+                opacity: isNight ? 0 : 1, transition: 'opacity 1s ease-in-out' 
+              }} 
+            />
+            {/* Имитация ночи с помощью фильтров и наложений */}
+            <div 
+              style={{ 
+                position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', 
+                backgroundColor: '#050510', mixBlendMode: 'multiply',
+                opacity: isNight ? 0.8 : 0, transition: 'opacity 1s ease-in-out', zIndex: 1
+              }}
+            ></div>
+            <img 
+              src="./images/apple_hero.jpg" 
+              alt="Night Scene" 
+              style={{ 
+                position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover',
+                opacity: isNight ? 1 : 0, transition: 'opacity 1s ease-in-out',
+                filter: 'brightness(0.3) contrast(1.2)'
+              }} 
+            />
+            {/* Теплый свет светильников ночью */}
+            <div 
+              style={{ 
+                position: 'absolute', top: '10%', left: '50%', transform: 'translateX(-50%)', width: '80%', height: '50%',
+                background: 'radial-gradient(ellipse, rgba(229,195,135,0.4) 0%, rgba(0,0,0,0) 70%)',
+                opacity: isNight ? 1 : 0, transition: 'opacity 1s ease-in-out', zIndex: 2, pointerEvents: 'none', mixBlendMode: 'screen'
+              }}
+            ></div>
+
+            <div style={{ position: 'absolute', bottom: '40px', left: '40px', zIndex: 3, textAlign: 'left', textShadow: '0 2px 10px rgba(0,0,0,0.8)' }}>
+              <h3 style={{ fontSize: '2rem', color: '#fff', marginBottom: '8px' }}>
+                {isNight ? 'Вечерний релакс' : 'Бодрое утро'}
+              </h3>
+              <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '1.1rem' }}>
+                {isNight ? 'Мягкий теплый свет 2700K подготавливает организм ко сну.' : 'Яркий дневной свет 4000K наполняет энергией для новых свершений.'}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3.5 ПРОЦЕСС ВНЕДРЕНИЯ */}
+      <section className="section" style={{ backgroundColor: 'var(--bg-primary)' }}>
+        <div className="container">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "0px" }} variants={fadeUp} style={{ textAlign: 'center', marginBottom: '80px' }}>
+            <h2 className="title-section" style={{  }}>Процесс внедрения</h2>
+            <p className="subtitle" style={{ maxWidth: '800px', margin: '16px auto 0', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '0.9rem' }}>
+              От первой встречи до первого включения света
+            </p>
+          </motion.div>
+
+          <div style={{ position: 'relative', maxWidth: '800px', margin: '0 auto' }}>
+            
+            {/* Базовая линия цепочки */}
+            <div style={{ position: 'absolute', top: '25px', bottom: '25px', left: '24px', width: '2px', background: 'rgba(255,255,255,0.05)', zIndex: 0 }}></div>
+            
+            {/* Бегущий энергетический лазер */}
+            <div style={{ position: 'absolute', top: 0, bottom: 0, left: '24px', width: '2px', overflow: 'hidden', zIndex: 0 }}>
+              <motion.div 
+                animate={{ y: ['-100%', '300%'] }}
+                transition={{ repeat: Infinity, duration: 3, ease: 'linear' }}
+                style={{ 
+                  width: '100%', height: '40%', 
+                  background: 'linear-gradient(to bottom, transparent, var(--accent-gold), transparent)', 
+                  boxShadow: '0 0 15px var(--accent-gold)' 
+                }}
+              />
+            </div>
+
+            <div className="flex-col-mobile" style={{ display: 'flex', flexDirection: 'column', gap: '60px' }}>
+              {[
+                { step: "01", title: "Проектирование", desc: "Разрабатываем светотехнический проект, подбираем оборудование и готовим кабельный журнал." },
+                { step: "02", title: "Прокладка сетей", desc: "Прокладываем шины DALI и силовые кабели. Собираем щит автоматики на нашем производстве." },
+                { step: "03", title: "Монтаж", desc: "Устанавливаем светильники, скрытые датчики присутствия и дизайнерские панели." },
+                { step: "04", title: "Программирование", desc: "Настраиваем биодинамику и сценарии. Вы получаете готовый к жизни умный дом." }
+              ].map((item, idx) => (
+                <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '40px', position: 'relative', zIndex: 1 }}>
+                  
+                  {/* Пульсирующий узел цепочки */}
+                  <motion.div 
+                    animate={{ boxShadow: ['0 0 0px rgba(229,195,135,0)', '0 0 25px rgba(229,195,135,0.4)', '0 0 0px rgba(229,195,135,0)'] }}
+                    transition={{ repeat: Infinity, duration: 2, delay: idx * 0.5 }}
+                    style={{ 
+                      width: '50px', height: '50px', borderRadius: '50%', 
+                      backgroundColor: 'var(--bg-primary)', 
+                      border: '2px solid rgba(229,195,135,0.3)', 
+                      display: 'flex', alignItems: 'center', justifyContent: 'center', 
+                      color: 'var(--accent-gold)', fontWeight: 600, fontSize: '1.1rem', 
+                      flexShrink: 0, position: 'relative', zIndex: 2 
+                    }}
+                  >
+                    <div style={{ position: 'absolute', width: '8px', height: '8px', backgroundColor: 'var(--accent-gold)', borderRadius: '50%', opacity: 0.5 }}></div>
+                    <span style={{ position: 'relative', zIndex: 1, backgroundColor: 'var(--bg-primary)', padding: '4px' }}>{item.step}</span>
+                  </motion.div>
+                  
+                  {/* Карточка */}
+                  <motion.div 
+                    initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} 
+                    variants={{ hidden: { opacity: 0, x: 30 }, visible: { opacity: 1, x: 0, transition: { delay: idx * 0.2, duration: 0.8 } } }}
+                    style={{ 
+                      flex: 1,
+                      backgroundColor: 'var(--bg-card)', 
+                      padding: '40px', 
+                      borderRadius: 'var(--radius-lg)',
+                      border: '1px solid rgba(255,255,255,0.03)',
+                      background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
+                      boxShadow: '0 20px 40px rgba(0,0,0,0.3)'
+                    }}
+                  >
+                    <h3 className="title-card">{item.title}</h3>
+                    <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6, margin: 0 }}>{item.desc}</p>
+                  </motion.div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. ОТЗЫВЫ (копия с Home) */}
+      <section className="section" style={{ backgroundColor: 'var(--bg-secondary)' }}>
+        <div className="container" style={{ textAlign: 'center' }}>
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "0px" }} variants={fadeUp} style={{ marginBottom: '80px' }}>
+            <h2 className="title-section" style={{  }}>Отзывы</h2>
+            <p className="subtitle" style={{ maxWidth: '800px', margin: '16px auto 0', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '0.9rem' }}>
+              Мы ценим каждого клиента. Их слова говорят сами за себя.
+            </p>
+          </motion.div>
+
+          <div className="reviews-grid">
+            {[
+              { text: "Умный дом превзошел все мои ожидания. Ребята все сделали быстро и качественно.", author: "Александр, Пентхаус" },
+              { text: "Система работает безупречно. Очень доволен результатом.", author: "Евгений, Резиденция" },
+              { text: "Спасибо команде AURA за профессионализм. Теперь мой дом по-настоящему умный.", author: "Михаил, Апартаменты" }
+            ].map((review, idx) => (
+              <motion.div 
+                key={idx}
+                initial="hidden" whileInView="visible" viewport={{ once: true, margin: "0px" }} 
+                variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { delay: idx * 0.1, duration: 0.8 } } }}
+                style={{ 
+                  backgroundColor: 'var(--bg-card)', 
+                  background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
+                  border: '1px solid rgba(229,195,135,0.1)',
+                  padding: '50px 40px', 
+                  borderRadius: 'var(--radius-lg)',
+                  position: 'relative',
+                  boxShadow: '0 20px 40px rgba(0,0,0,0.5)',
+                  display: 'flex',
+                  flexDirection: 'column'
+                }}
+              >
+                <div style={{ marginBottom: '20px', textAlign: 'left' }}>
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="rgba(229,195,135,0.4)" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9.983 3v7.391C9.983 16.095 6.252 19.961 3 21l-2-2.223c2.473-1.018 4.356-3.155 4.887-5.777H0V3h9.983zm14.017 0v7.391c0 5.704-3.731 9.57-6.983 10.609l-2-2.223c2.473-1.018 4.356-3.155 4.888-5.777h-5.888V3h9.983z"/>
+                  </svg>
+                </div>
+                <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', flex: 1 }}>
+                  <p style={{ fontSize: '1.3rem', fontWeight: 400, marginBottom: '40px', flex: 1, fontFamily: 'var(--font-heading)', fontStyle: 'italic', color: '#fff', lineHeight: 1.6 }}>{review.text}</p>
+                  <div style={{ color: 'var(--accent-gold)', fontWeight: 600, letterSpacing: '0.05em', textTransform: 'uppercase', fontSize: '0.9rem' }}>{review.author}</div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. FAQ */}
+      <FAQ />
+
+      {/* 6. КОНТАКТЫ */}
+      <ContactsBlock />
+
+      {/* Back Link */}
+      <div className="container" style={{ padding: '40px 0 80px', textAlign: 'center' }}>
+        <Link to="/products" style={{ color: 'var(--accent-gold)', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+          <span style={{ fontSize: '1.2rem' }}>&lsaquo;</span> Вернуться ко всем продуктам
+        </Link>
+      </div>
+    </div>
+  );
+};
+
+export default LightingDetail;
