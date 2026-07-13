@@ -172,7 +172,7 @@ p, .subtitle, .text-lead, .text-base, .text-sm, .text-xs {
 
 @media (max-width: 768px) {
   .section {
-    padding: 80px 0;
+    padding: 60px 0;
   }
 }
 
@@ -189,6 +189,18 @@ p, .subtitle, .text-lead, .text-base, .text-sm, .text-xs {
   position: relative;
   overflow: hidden;
   z-index: 1;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  cursor: pointer;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(229, 195, 135, 0.2);
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 5px 10px rgba(229, 195, 135, 0.1);
 }
 
 .btn-primary {
@@ -324,16 +336,40 @@ details p.faq-answer {
     height: auto !important;
   }
   
+  .mobile-vertical-carousel {
+    flex-direction: column !important;
+    overflow-x: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  .mobile-vertical-carousel > div {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-bottom: 30px;
+  }
+  
+  .mobile-stack {
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+  
+  .mobile-stack > * {
+    width: 100% !important;
+    text-align: center;
+  }
+  
   .text-center-mobile {
     text-align: center !important;
   }
   
   .title-section {
-    font-size: clamp(2rem, 8vw, 2.5rem);
+    font-size: clamp(2rem, 8vw, 2.5rem) !important;
   }
   
   .title-hero {
-    font-size: clamp(2.5rem, 10vw, 3.5rem);
+    font-size: clamp(2.5rem, 10vw, 3.5rem) !important;
   }
   
   .container {
@@ -341,7 +377,19 @@ details p.faq-answer {
   }
   
   .page-wrapper {
-    padding-top: 100px !important;
+    padding-top: 80px !important;
+  }
+  
+  /* Сброс абсолютного позиционирования для мобильных текстов на сценах */
+  .mobile-relative-text {
+    position: relative !important;
+    bottom: auto !important;
+    left: auto !important;
+    padding: 20px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    text-align: center !important;
+    margin-top: 20px !important;
   }
 }
 

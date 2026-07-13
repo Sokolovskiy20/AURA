@@ -116,7 +116,7 @@ const AzureCoastDetail = () => {
               whileInView={{ rotateX: 55, rotateZ: -35, y: 0, opacity: 1 }}
               transition={{ duration: 1.5, ease: "easeOut" }}
               viewport={{ once: true, margin: "0px" }}
-              style={{ position: 'relative', width: '400px', height: '400px', transformStyle: 'preserve-3d' }}
+              style={{ position: 'relative', width: '100%', maxWidth: '400px', height: '400px', maxHeight: '100vw', transformStyle: 'preserve-3d' }}
             >
               {/* Слой 1: Архитектура (Нижний) */}
               <motion.div 
@@ -183,7 +183,7 @@ const AzureCoastDetail = () => {
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              style={{ position: 'absolute', bottom: '10vh', left: '10vw', maxWidth: '900px' }}
+              style={{ position: 'absolute', bottom: '10vh', left: '5vw', width: '90vw', maxWidth: '900px' }}
             >
               <div style={{ fontSize: '0.9rem', textTransform: 'uppercase', color: 'var(--accent-gold)', letterSpacing: '0.1em', marginBottom: '10px' }}>{s.time}</div>
               <h3 className="title-section" style={{ marginBottom: "30px", color: "#fff" }}>{s.title}</h3>
@@ -207,7 +207,7 @@ const AzureCoastDetail = () => {
               style={{ 
                 backgroundColor: 'var(--bg-card)', 
                 background: 'linear-gradient(135deg, rgba(229,195,135,0.08) 0%, rgba(0,0,0,0.5) 100%)',
-                padding: '60px 60px 60px 80px', 
+                padding: 'clamp(30px, 5vw, 60px)', 
                 borderRadius: 'var(--radius-lg)', 
                 position: 'relative', 
                 boxShadow: '0 30px 60px rgba(0,0,0,0.6), inset 0 1px 0 rgba(229,195,135,0.1)',

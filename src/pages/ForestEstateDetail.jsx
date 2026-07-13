@@ -88,7 +88,7 @@ const ForestEstateDetail = () => {
               whileInView={{ rotateX: 55, rotateZ: -35, y: 0, opacity: 1 }}
               transition={{ duration: 1.5, ease: "easeOut" }}
               viewport={{ once: true, margin: "0px" }}
-              style={{ position: 'relative', width: '400px', height: '400px', transformStyle: 'preserve-3d' }}
+              style={{ position: 'relative', width: '100%', maxWidth: '400px', height: '400px', maxHeight: '100vw', transformStyle: 'preserve-3d' }}
             >
               {/* Слой 1: Дизайн (Нижний) */}
               <motion.div 
@@ -151,7 +151,7 @@ const ForestEstateDetail = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
               viewport={{ once: false, margin: "-100px" }}
-              style={{ position: 'absolute', bottom: '10vh', left: '10vw', maxWidth: '900px' }}
+              style={{ position: 'absolute', bottom: '10vh', left: '5vw', width: '90vw', maxWidth: '900px' }}
             >
               <div style={{ color: 'var(--accent-gold)', fontSize: '1.2rem', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '10px' }}>{s.time}</div>
               <h3 style={{ color: '#fff', fontSize: 'clamp(2rem, 6vw, 3rem)', marginBottom: '20px', lineHeight: 1.2 }}>{s.title}</h3>
@@ -186,10 +186,10 @@ const ForestEstateDetail = () => {
               <img 
                 src="./images/forest_slider_hq_1782971567164.jpg" 
                 alt="После" 
-                style={{ width: '1000px', height: '100%', objectFit: 'cover', filter: 'brightness(1.2) contrast(1.1) saturate(1.2)' }} 
+                style={{ width: '100%', height: '100%', minWidth: '1000px', objectFit: 'cover', filter: 'brightness(1.2) contrast(1.1) saturate(1.2)' }} 
               />
               {/* Эффект подсветки "умного света" */}
-              <div style={{ position: 'absolute', top: 0, left: 0, width: '1000px', height: '100%', background: 'radial-gradient(ellipse at 50% 50%, rgba(229,195,135,0.3) 0%, transparent 70%)', mixBlendMode: 'screen' }}></div>
+              <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', minWidth: '1000px', background: 'radial-gradient(ellipse at 50% 50%, rgba(229,195,135,0.3) 0%, transparent 70%)', mixBlendMode: 'screen' }}></div>
               <div style={{ position: 'absolute', top: '30px', left: '30px', color: 'var(--accent-gold)', fontSize: '1.2rem', fontWeight: 'bold', textShadow: '0 2px 10px rgba(0,0,0,0.8)' }}>СЦЕНАРИЙ «ВЕЧЕРНИЙ ЛЕС» AURA</div>
             </div>
 
@@ -228,7 +228,7 @@ const ForestEstateDetail = () => {
               style={{ 
                 backgroundColor: 'var(--bg-card)', 
                 background: 'linear-gradient(135deg, rgba(229,195,135,0.08) 0%, rgba(0,0,0,0.5) 100%)',
-                padding: '60px 60px 60px 80px', 
+                padding: 'clamp(30px, 5vw, 60px)', 
                 borderRadius: 'var(--radius-lg)', 
                 position: 'relative', 
                 boxShadow: '0 30px 60px rgba(0,0,0,0.6), inset 0 1px 0 rgba(229,195,135,0.1)',

@@ -23,7 +23,7 @@ const Contacts = () => {
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '40px', maxWidth: '1000px', margin: '0 auto', paddingBottom: '140px' }}>
           
-          <motion.div initial="hidden" animate="visible" variants={fadeUp} style={{ backgroundColor: 'var(--bg-secondary)', padding: '60px', borderRadius: 'var(--radius-lg)' }}>
+          <motion.div initial="hidden" animate="visible" variants={fadeUp} style={{ backgroundColor: 'var(--bg-secondary)', padding: 'clamp(30px, 5vw, 60px)', borderRadius: 'var(--radius-lg)' }}>
             <h2 className="title-h2" style={{ marginBottom: "40px" }}>Офис в Дубае</h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
               <div>
@@ -41,7 +41,7 @@ const Contacts = () => {
             </div>
           </motion.div>
 
-          <motion.div initial="hidden" animate="visible" variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 0.2 } } }} style={{ backgroundColor: 'var(--bg-dark)', color: 'var(--text-inverse)', padding: '60px', borderRadius: 'var(--radius-lg)' }}>
+          <motion.div initial="hidden" animate="visible" variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 0.2 } } }} style={{ backgroundColor: 'var(--bg-dark)', color: 'var(--text-inverse)', padding: 'clamp(30px, 5vw, 60px)', borderRadius: 'var(--radius-lg)' }}>
             <h2 className="title-h2" style={{ marginBottom: "40px", color: "#fff" }}>Написать нам</h2>
             <form onSubmit={(e) => e.preventDefault()} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
               <input type="text" placeholder="Имя" className="form-input" />

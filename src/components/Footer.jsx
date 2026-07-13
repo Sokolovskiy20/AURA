@@ -5,7 +5,7 @@ const Footer = () => {
     <footer style={{ backgroundColor: 'var(--bg-secondary)', padding: '60px 0 40px 0', borderTop: '1px solid rgba(0,0,0,0.05)' }}>
       <div className="container">
         
-        <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr 1fr 1fr', gap: '40px', paddingBottom: '40px', borderBottom: '1px solid rgba(0,0,0,0.05)' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '40px', paddingBottom: '40px', borderBottom: '1px solid rgba(0,0,0,0.05)' }}>
           <div>
             <Link to="/" className="title-card" style={{ letterSpacing: "-0.02em", color: "var(--text-primary)", display: "block", marginBottom: "20px" }}>
               AURA
@@ -42,11 +42,11 @@ const Footer = () => {
           </div>
         </div>
 
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '20px' }}>
+        <div className="flex-col-mobile" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '20px' }}>
           <div className="text-xs" style={{ color: "var(--text-secondary)" }}>
             Copyright © 2026 AURA Inc. Все права защищены.
           </div>
-          <div style={{ display: 'flex', gap: '20px' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '20px' }}>
             <Link to="#" className="text-xs" style={{ color: "var(--text-secondary)" }}>Политика конфиденциальности</Link>
             <span style={{ color: 'rgba(0,0,0,0.1)' }}>|</span>
             <Link to="#" className="text-xs" style={{ color: "var(--text-secondary)" }}>Условия использования</Link>

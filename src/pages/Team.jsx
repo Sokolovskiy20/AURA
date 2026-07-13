@@ -163,8 +163,6 @@ const Team = () => {
               { name: 'Анна Соколова', role: 'Директор по клиентскому сервису', img: './images/team_sarah_1782934078062.jpg', roleColor: '#86868b' }
             ].map((member, idx) => (
               <motion.div key={idx} variants={fadeUp} 
-                whileHover={{ y: -10 }}
-                transition={{ duration: 0.3 }}
                 style={{ 
                   borderRadius: '24px', 
                   overflow: 'hidden', 
@@ -184,11 +182,9 @@ const Team = () => {
                   boxShadow: '0 4px 15px rgba(229,195,135,0.4)',
                   zIndex: 2
                 }}></div>
-                <motion.img 
+                <img 
                   src={member.img} 
                   alt={member.name} 
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.6 }}
                   style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.8, zIndex: 0, position: 'relative' }} 
                 />
                 <div style={{ position: 'absolute', bottom: 0, left: 0, width: '100%', padding: '30px', background: 'linear-gradient(to top, rgba(0,0,0,0.95) 0%, transparent 100%)', zIndex: 1 }}>
@@ -263,6 +259,7 @@ const Team = () => {
 
           <div style={{ position: 'relative' }}>
             <button 
+              className="mobile-hidden"
               onClick={scrollLeft} 
               aria-label="Прокрутить влево"
               style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', zIndex: 10, width: '50px', height: '50px', borderRadius: '50%', border: '1px solid rgba(255,255,255,0.2)', backgroundColor: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(10px)', color: '#fff', fontSize: '1.2rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: '0.3s' }} 
@@ -272,6 +269,7 @@ const Team = () => {
               ←
             </button>
             <button 
+              className="mobile-hidden"
               onClick={scrollRight} 
               aria-label="Прокрутить вправо"
               style={{ position: 'absolute', right: '10px', top: '50%', transform: 'translateY(-50%)', zIndex: 10, width: '50px', height: '50px', borderRadius: '50%', border: '1px solid rgba(255,255,255,0.2)', backgroundColor: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(10px)', color: '#fff', fontSize: '1.2rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: '0.3s' }} 
@@ -281,7 +279,7 @@ const Team = () => {
               →
             </button>
 
-            <div ref={carouselRef} className="hide-scrollbar" style={{ display: 'flex', gap: '30px', overflowX: 'auto', paddingBottom: '40px', scrollSnapType: 'x mandatory', margin: '0 -20px', padding: '0 20px 40px 20px', WebkitOverflowScrolling: 'touch', scrollBehavior: 'smooth' }}>
+            <div ref={carouselRef} className="hide-scrollbar mobile-vertical-carousel" style={{ display: 'flex', gap: '30px', overflowX: 'auto', paddingBottom: '40px', scrollSnapType: 'x mandatory', margin: '0 -20px', padding: '0 20px 40px 20px', WebkitOverflowScrolling: 'touch', scrollBehavior: 'smooth' }}>
             {[
               { 
                 title: 'ЗАГОРОДНАЯ РЕЗИДЕНЦИЯ «FOREST ESTATE»', 
@@ -302,7 +300,7 @@ const Team = () => {
                 link: '/projects/azure-coast'
               }
             ].map((proj, idx) => (
-              <motion.div key={idx} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: idx * 0.1 }} style={{ minWidth: '350px', width: '450px', flexShrink: 0, scrollSnapAlign: 'start', position: 'relative', borderRadius: '30px', overflow: 'hidden', height: '450px', backgroundColor: '#1d1d1f', textAlign: 'left' }}>
+              <motion.div key={idx} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: idx * 0.1 }} style={{ width: '85vw', maxWidth: '450px', flexShrink: 0, scrollSnapAlign: 'start', position: 'relative', borderRadius: '30px', overflow: 'hidden', height: '450px', backgroundColor: '#1d1d1f', textAlign: 'left' }}>
                 <Link to={proj.link} style={{ display: 'block', width: '100%', height: '100%' }}>
                   <motion.img whileHover={{ scale: 1.05 }} transition={{ duration: 0.6 }} src={proj.img} alt={proj.title} style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.7 }} />
                   <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', background: 'linear-gradient(to top, rgba(0,0,0,0.95) 0%, transparent 80%)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: '40px' }}>

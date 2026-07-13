@@ -49,7 +49,7 @@ const Home = () => {
             <motion.p variants={fadeUp} style={{ fontSize: '1.2rem', color: 'rgba(255,255,255,0.8)', marginBottom: '50px', maxWidth: '600px', margin: '0 auto 50px', lineHeight: 1.5 }}>
               Интеллектуальный дом, полностью скрытый от глаз. Ультимативный комфорт и приватность на высоте.
             </motion.p>
-            <motion.div variants={fadeUp} style={{ display: 'flex', gap: '20px', justifyContent: 'center' }}>
+            <motion.div variants={fadeUp} className="mobile-stack" style={{ display: 'flex', gap: '20px', justifyContent: 'center' }}>
               <Link to="/contacts" className="btn" style={{ backgroundColor: 'var(--accent-gold)', color: '#000', padding: '16px 32px', borderRadius: '30px', fontWeight: 600, fontSize: '1.1rem' }}>
                 Запросить консультацию
               </Link>
@@ -74,9 +74,9 @@ const Home = () => {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '30px', textAlign: 'left' }}>
             
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "0px" }} variants={fadeUp} style={{ height: '100%' }}>
-              <motion.div whileHover="hover" variants={{ hover: { y: -10, transition: { duration: 0.3 } } }} style={{ backgroundColor: 'var(--bg-card)', borderRadius: 'var(--radius-lg)', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.05)', boxShadow: '0 20px 40px rgba(0,0,0,0.5)', height: '100%' }}>
+              <div style={{ backgroundColor: 'var(--bg-card)', borderRadius: 'var(--radius-lg)', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.05)', boxShadow: '0 20px 40px rgba(0,0,0,0.5)', height: '100%' }}>
                 <div style={{ height: '280px', overflow: 'hidden', position: 'relative' }}>
-                  <motion.img variants={{ hover: { scale: 1.05, transition: { duration: 0.6 } } }} src="./images/apple_security.jpg" alt="Privacy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <img src="./images/apple_security.jpg" alt="Privacy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', background: 'linear-gradient(to bottom, transparent 50%, var(--bg-card) 100%)' }}></div>
                 </div>
                 <div style={{ padding: '0 40px 50px 40px', position: 'relative', zIndex: 2, marginTop: '-30px' }}>
@@ -84,13 +84,13 @@ const Home = () => {
                   <h3 style={{ fontSize: '1.8rem', fontWeight: 600, marginBottom: '16px', textTransform: 'uppercase' }}>Безопасность</h3>
                   <p style={{ fontSize: '1.1rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>Многоуровневая система защиты.</p>
                 </div>
-              </motion.div>
+              </div>
             </motion.div>
 
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "0px" }} variants={fadeUp} transition={{ delay: 0.1 }} style={{ height: '100%' }}>
-              <motion.div whileHover="hover" variants={{ hover: { y: -10, transition: { duration: 0.3 } } }} style={{ backgroundColor: 'var(--bg-card)', borderRadius: 'var(--radius-lg)', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.05)', boxShadow: '0 20px 40px rgba(0,0,0,0.5)', height: '100%' }}>
+              <div style={{ backgroundColor: 'var(--bg-card)', borderRadius: 'var(--radius-lg)', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.05)', boxShadow: '0 20px 40px rgba(0,0,0,0.5)', height: '100%' }}>
                 <div style={{ height: '280px', overflow: 'hidden', position: 'relative' }}>
-                  <motion.img variants={{ hover: { scale: 1.05, transition: { duration: 0.6 } } }} src="./images/apple_adv.jpg" alt="Aesthetics" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <img src="./images/apple_adv.jpg" alt="Aesthetics" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', background: 'linear-gradient(to bottom, transparent 50%, var(--bg-card) 100%)' }}></div>
                 </div>
                 <div style={{ padding: '0 40px 50px 40px', position: 'relative', zIndex: 2, marginTop: '-30px' }}>
@@ -98,13 +98,13 @@ const Home = () => {
                   <h3 style={{ fontSize: '1.8rem', fontWeight: 600, marginBottom: '16px', textTransform: 'uppercase' }}>Контроль</h3>
                   <p style={{ fontSize: '1.1rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>Управление из любой точки мира.</p>
                 </div>
-              </motion.div>
+              </div>
             </motion.div>
 
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "0px" }} variants={fadeUp} transition={{ delay: 0.2 }} style={{ height: '100%' }}>
-              <motion.div whileHover="hover" variants={{ hover: { y: -10, transition: { duration: 0.3 } } }} style={{ backgroundColor: 'var(--bg-card)', borderRadius: 'var(--radius-lg)', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.05)', boxShadow: '0 20px 40px rgba(0,0,0,0.5)', height: '100%' }}>
+              <div style={{ backgroundColor: 'var(--bg-card)', borderRadius: 'var(--radius-lg)', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.05)', boxShadow: '0 20px 40px rgba(0,0,0,0.5)', height: '100%' }}>
                 <div style={{ height: '280px', overflow: 'hidden', position: 'relative' }}>
-                  <motion.img variants={{ hover: { scale: 1.05, transition: { duration: 0.6 } } }} src="./images/apple_hero.jpg" alt="Reliability" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <img src="./images/apple_hero.jpg" alt="Reliability" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', background: 'linear-gradient(to bottom, transparent 50%, var(--bg-card) 100%)' }}></div>
                 </div>
                 <div style={{ padding: '0 40px 50px 40px', position: 'relative', zIndex: 2, marginTop: '-30px' }}>
@@ -112,7 +112,7 @@ const Home = () => {
                   <h3 style={{ fontSize: '1.8rem', fontWeight: 600, marginBottom: '16px', textTransform: 'uppercase' }}>Приватность</h3>
                   <p style={{ fontSize: '1.1rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>Система работает только локально.</p>
                 </div>
-              </motion.div>
+              </div>
             </motion.div>
 
           </div>
@@ -204,7 +204,7 @@ const Home = () => {
             </p>
           </motion.div>
 
-          <div className="hide-scrollbar" style={{ display: 'flex', gap: '24px', overflowX: 'auto', paddingBottom: '40px', scrollSnapType: 'x mandatory', margin: '0 -22px', padding: '0 22px 40px 22px' }}>
+          <div className="hide-scrollbar mobile-vertical-carousel" style={{ display: 'flex', gap: '24px', overflowX: 'auto', paddingBottom: '40px', scrollSnapType: 'x mandatory', margin: '0 -22px', padding: '0 22px 40px 22px' }}>
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "0px" }} variants={fadeUp} style={{ minWidth: '320px', width: '85%', maxWidth: '800px', flexShrink: 0, scrollSnapAlign: 'start' }}>
               <div style={{ borderRadius: 'var(--radius-md)', overflow: 'hidden', marginBottom: '20px', height: '450px' }}>
                 <img src="./images/forest_hero_apple_1782971244210.jpg" alt="Forest Estate" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
